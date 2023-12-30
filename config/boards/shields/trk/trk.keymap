@@ -1,0 +1,179 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+
+/ {
+    behaviors {
+        gresc: grave_escape {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+        };
+    };
+};
+
+/ {
+    behaviors {
+        leftback: left_back {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT>, <&kp C_AC_BACK>;
+            mods = <(MOD_LSFT|MOD_LCTL)>;
+        };
+    };
+};
+
+/ {
+    behaviors {
+        rightforward: right_forward {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT>, <&kp C_AC_FORWARD>;
+            mods = <(MOD_LSFT|MOD_LCTL)>;
+        };
+    };
+};
+
+/ {
+    behaviors {
+        uppgup: up_pgup {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&kp PG_UP>;
+            mods = <(MOD_LSFT|MOD_LCTL)>;
+        };
+    };
+};
+
+/ {
+    behaviors {
+        downpgdown: down_pgdown {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&kp PG_DN>;
+            mods = <(MOD_LSFT|MOD_LCTL)>;
+        };
+    };
+};
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_layer1 {
+            timeout-ms = <50>;
+            key-positions = <37 41>;
+	    layers = <0>;
+            bindings = <&mo 1>;
+        };
+    };
+};
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_layer5 {
+            timeout-ms = <50>;
+            key-positions = <37 41>;
+	    layers = <4>;
+            bindings = <&mo 5>;
+        };
+    };
+};
+
+/ {
+	keymap {
+		compatible = "zmk,keymap";
+
+		default_layer_0 {
+				// -----------------------------------------------------------------------------------------
+				// |  ESC  |  Q   |  W   |  E   |  R   |  T   |   Y   |  U    |  I   |  O   |   P   | BSPC  |
+				// |  TAB  |  A   |  S   |  D   |  F   |  G   |   H   |  J    |  K   |  L   |   ;   |  '    |
+				// | SHIFT |  Z   |  X   |  C   |  V   |  B   |   N   |  M    |  ,   |  .   |   /   |  RET  |
+				// | LCTL  | LGUI | LALT |  \   | LOWR | SPC  |  RAIS | LARW | DARW | UARW  |  RARW |  P/P  |
+
+				// -----------------------------------------------------------------------------------------
+				// |  ESC  |  Q   |  W   |  E   |  R   |  T   |   B   |  V    |  C   |  X   |   Z   |  LSFT |
+				// |   Y   |  U   |  I   |  O   |  P   | BSPC |  ENT  |  /    |  .   |  ,   |   M   |   N   |
+				// |  TAB  |  A   |  S   |  D   |  F   |  G   |  SPC  |  LOWR |  \   | LALT | LGUI  |  LCTL |
+				// |   H   |  J   |  K   |  L   | SCLN | QUTE |  P/P  | RARW | UARW | DARW  |  LARW | RAISE |
+
+
+			bindings = <
+				&gresc    &kp Q    &kp W    &kp E    &kp R  &kp T        &kp Y  &kp U    &kp I     &kp O    &kp P     &kp BSPC
+				&kp TAB	  &kp A    &kp S    &kp D    &kp F  &kp G        &kp H  &kp J    &kp K     &kp L    &kp SEMI  &kp SQT
+				&kp LSHFT &kp Z    &kp X    &kp C    &kp V  &kp B        &kp N  &kp M    &kp COMMA &kp DOT  &kp FSLH  &kp RET
+			     	&kp LCTL  &kp LALT &trans   &trans   &trans &lt 2 SPACE  &trans &trans   &kp RGUI  &kp END  &mo 3     &to 4
+			    // 	&kp LCTL  &kp LALT &trans   &trans   &trans &spacelayers &trans &trans   &kp RGUI  &kp END  &mo 3     &to 4
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+		};
+
+		layer_1 {
+			bindings = <
+				&kp LS(GRAVE)	&kp LS(N1)  &trans     &kp LS(N7) &trans        &trans     &trans     &kp UNDER  &trans        &trans       &kp LS(N6)     &kp BSPC
+				&trans  	&kp LS(N2)  &kp LS(N4) &trans     &trans        &trans     &kp MINUS  &kp FSLH   &kp LS(N8)    &kp PLUS     &trans         &kp PIPE
+				&trans  	&trans      &kp LS(N5) &trans     &trans        &trans     &kp LS(N3) &trans     &kp LBKT      &kp RBKT     &uppgup        &kp EQUAL
+				&trans  	&trans      &trans     &trans     &trans        &trans     &trans     &trans     &leftback     &downpgdown  &rightforward  &kp K_CMENU
+			>;
+		};
+
+		layer_2 {
+			bindings = <
+				&kp GRAVE &kp N1 &kp N2     &kp N3 &kp N4 &kp N5 &kp N6    &kp N7    &kp N8     &kp N9     &kp N0     &kp DEL
+				&trans    &trans &trans     &trans &trans &trans &kp MINUS &kp FSLH  &kp LS(N8) &kp PLUS   &trans     &kp BSLH
+				&trans    &trans &trans     &trans &trans &trans &trans    &trans    &kp LS(N9) &kp LS(N0) &kp EXCL   &kp EQUAL
+				&trans    &trans &trans     &trans &trans &trans &trans    &trans    &trans     &trans     &trans     &kp C_PP
+			>;
+		};
+
+		control_3 {
+			bindings = <
+				&sys_reset &kp F1       &kp F2     &kp F3     &kp F4     &kp F5  &kp F6     &kp F7   &kp F8  &kp F9     &kp F10 &kp DEL
+				&trans 	   &kp F11	&kp F12    &trans     &trans     &trans  &bt BT_PRV &trans   &trans  &bt BT_NXT &trans  &trans
+				&trans     &bootloader  &bt BT_CLR &trans     &trans     &trans  &trans     &trans   &trans  &trans     &trans  &trans
+				&trans     &trans       &trans     &trans     &trans     &trans  &trans     &trans   &trans  &trans     &trans  &ext_power EP_ON
+			>;
+		};
+
+		game_4 {
+			bindings = <
+				&gresc    &kp Q        &kp W    &kp E    &kp R  &kp T        &kp Y  &kp U    &kp I      &kp O      &kp P     &kp BSPC
+				&kp TAB	  &kp A        &kp S    &kp D    &kp F  &kp G        &kp H  &kp J    &kp K      &kp L      &kp SEMI  &kp SQT
+				&kp LSHFT &kp Z        &kp X    &kp C    &kp V  &kp B        &kp N  &kp M    &kp COMMA  &kp DOT    &kp FSLH  &kp RET
+			     	&kp LCTL  &kp LALT     &trans   &trans   &trans &kp SPACE    &trans &trans   &lt 6 RGUI &kp END    &mo 7     &to 0
+			    // 	&kp LCTL  &tdaltlayer5 &trans   &trans   &trans &kp SPACE    &trans &trans   &lt 6 RGUI &kp END    &mo 7     &to 0
+			    //  &kp LCTL  &kp LALT     &trans   &trans   &trans &spacelayer5 &trans &trans   &lt 6 RGUI &kp END    &mo 7     &to 0
+			>;
+		};
+
+		game_symbol_5 {
+			bindings = <
+				&kp LS(GRAVE)	&kp LS(N1)  &trans     &kp LS(N7) &trans        &trans     &trans     &kp UNDER  &trans        &trans       &kp LS(N6)     &kp BSPC
+				&trans  	&kp LS(N2)  &kp LS(N4) &trans     &trans        &trans     &kp MINUS  &kp FSLH   &kp LS(N8)    &kp PLUS     &trans         &kp PIPE
+				&trans  	&trans      &kp LS(N5) &trans     &trans        &trans     &kp LS(N3) &trans     &kp LBKT      &kp RBKT     &uppgup        &kp EQUAL
+				&trans  	&trans      &trans     &trans     &trans        &trans     &trans     &trans     &leftback     &downpgdown  &rightforward  &kp K_CMENU
+			>;
+		};
+
+		game_number_6 {
+			bindings = <
+				&kp GRAVE &kp N1 &kp N2     &kp N3 &kp N4 &kp N5 &kp N6    &kp N7    &kp N8     &kp N9     &kp N0     &kp DEL
+				&trans    &trans &trans     &trans &trans &trans &kp MINUS &kp FSLH  &kp LS(N8) &kp PLUS   &trans     &kp BSLH
+				&trans    &trans &trans     &trans &trans &trans &trans    &trans    &kp LS(N9) &kp LS(N0) &kp EXCL   &kp EQUAL
+				&trans    &trans &trans     &trans &trans &trans &trans    &trans    &trans     &trans     &trans     &kp C_PP
+			>;
+		};
+
+		game_fn_7 {
+			bindings = <
+				&trans     &kp F1       &kp F2     &kp F3     &kp F4     &kp F5  &kp F6     &kp F7   &kp F8  &kp F9     &kp F10 &kp DEL
+				&trans 	   &kp F11	&kp F12    &trans     &trans     &trans  &trans     &trans   &trans  &trans     &trans  &trans
+				&trans     &trans       &trans     &trans     &trans     &trans  &trans     &trans   &trans  &trans     &trans  &trans
+				&trans     &trans       &trans     &trans     &trans     &trans  &trans     &trans   &trans  &trans     &trans  &trans
+			>;
+		};
+	};
+};
