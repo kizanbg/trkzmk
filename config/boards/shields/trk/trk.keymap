@@ -101,11 +101,11 @@
 
 
 			bindings = <
-				&kp ESC     &kp N1      &kp N2      &kp N3      &kp N4      &kp N5      &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp MINUS   &kp EQUAL   &kp KP_SLASH    &kp KP_ASTERISK
-                &kp TAB     &kp Q       &kp W       &kp E       &kp R       &kp T       &kp Y       &kp U       &kp I       &kp O       &kp P       &kp LBKT    &kp RBKT    &kp BSLH        &kp HOME
-                &kp CLCK    &kp A       &kp S       &kp D       &kp F       &kp G       &kp H       &kp J       &kp K       &kp L       &kp K_MUTE  &kp SEMI    &kp SQT     &kp RET         &kp END  
-                &kp LSHFT   &kp Z       &kp X       &kp C       &kp V       &kp B       &kp N       &kp M       &kp COMMA   &kp DOT     &none       &kp FSLH    &kp RSHFT   &kp UP          &kp DELET
-                &kp LCTRL   &kp LGUI    &kp LALT    &none       &kp SPACE   &kp B       &kp BSPC    &none       &mo 1       &none       &none       &kp RCTRL   &kp LEFT    &kp DOWN        &kp RIGHT
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
@@ -113,21 +113,71 @@
 
 		layer_1 {
 			bindings = <
-				&bootloader  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
 			>;
 		};
 
 		layer_2 {
 			bindings = <
-				&bootloader  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
-                &none        &none        &none        &none        &none   &none       &none       &none       &none        &none      &none       &none        &none      &none           &none
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
+			>;
+		};
+
+		control_3 {
+			bindings = <
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
+			>;
+		};
+
+		game_4 {
+			bindings = <
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
+			>;
+		};
+
+		game_symbol_5 {
+			bindings = <
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
+			>;
+		};
+
+		game_number_6 {
+			bindings = <
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
+			>;
+		};
+
+		game_fn_7 {
+			bindings = <
+				&gresc    &kp N1   &kp N2   &kp N3      &kp N4 &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0  &kp MINUS   &kp EQUAL   &trans         &trans
+				&kp TAB   &kp Q    &kp W    &kp E       &kp R  &kp T   &kp Y     &kp U    &kp I     &kp O    &kp P   &kp LBKT    &kp RBKT    &kp BSLH       &trans
+				&kp TAB	  &kp A    &kp S    &kp D       &kp F  &kp G   &kp H     &kp J    &kp K     &kp L    &trans  &kp SEMI    &kp SQT     &kp RET        &kp END  
+				&kp LSHFT &kp Z    &kp X    &kp C       &kp V  &kp B   &kp N     &kp M    &kp COMMA &kp DOT  &trans  &kp FSLH    &trans      &uppgup        &kp DEL
+			    &kp LCTL  &kp LGUI &kp LALT &lt 2 SPACE &trans &kp B   &kp BSPC  &trans   &mo 1     &trans   &trans  &kp LCTL   &leftback    &downpgdown   &rightforward
 			>;
 		};
 	};
