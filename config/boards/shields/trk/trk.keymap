@@ -16,15 +16,5 @@
 			    &kp LCTL    &kp LGUI    &kp LALT    &trans      &kp SPACE   &kp B       &kp BSPC    &trans      &to 1       &trans      &trans    &kp RCTRL     &kp LEFT    &kp DOWN    &kp RIGHT
 			>;
 		};
-
-		bt_layer {
-			bindings = <
-			    &bootloader &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &trans   &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-			    &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-			    &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-			    &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-			    &bt BT_CRL  &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
-			>;
-		};
 	};
 };
