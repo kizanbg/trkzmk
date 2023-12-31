@@ -31,7 +31,7 @@
             , <&pro_micro 14 GPIO_ACTIVE_HIGH>
             , <&pro_micro 16 GPIO_ACTIVE_HIGH>
             , <&pro_micro 10 GPIO_ACTIVE_HIGH>
-            , <&gpio1     01 GPIO_ACTIVE_HIGH>
+            , <&gpio1      1 GPIO_ACTIVE_HIGH>
             , <&pro_micro  3 GPIO_ACTIVE_HIGH>
             , <&pro_micro  4 GPIO_ACTIVE_HIGH>
             , <&pro_micro  5 GPIO_ACTIVE_HIGH>
@@ -39,7 +39,7 @@
             , <&pro_micro  7 GPIO_ACTIVE_HIGH>
             , <&pro_micro  8 GPIO_ACTIVE_HIGH>
             , <&pro_micro  9 GPIO_ACTIVE_HIGH>
-            , <&gpio1     07 GPIO_ACTIVE_HIGH>
+            , <&gpio1      7 GPIO_ACTIVE_HIGH>
             ;
 
         row-gpios
@@ -50,19 +50,5 @@
 			, <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
-	
-		encoder: encoder {
-		compatible = "alps,ec11";
-		label = "ENCODER";
-		a-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		b-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		resolution = <4>;
-		status = "okay";
-	};
-
-	sensors {
-		compatible = "zmk,keymap-sensors";
-		sensors = <&encoder>;
-	};
 	
 };
