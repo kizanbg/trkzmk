@@ -42,6 +42,7 @@
             , <&gpio1      2 GPIO_ACTIVE_HIGH>
             ;
 
+
         row-gpios
             = <&pro_micro  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&gpio1      1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
