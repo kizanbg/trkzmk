@@ -1,7 +1,7 @@
 if SHIELD_trk
 
 config ZMK_KEYBOARD_NAME
-    default "trk"
+    default "trkbt"
 
 endif
 
