@@ -16,7 +16,6 @@
 			    &kp LCTL    &kp LGUI      &kp LALT      &trans      &kp SPACE   &kp B       &kp BSPC    &trans      &mo 1       &trans      &trans    &kp RCTRL     &kp LEFT    &kp DOWN   	  &kp RIGHT
 			>;
 		};
-		
 
 		bt_layer {
 			bindings = <
