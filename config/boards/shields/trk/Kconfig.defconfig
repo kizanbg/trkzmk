@@ -3,5 +3,11 @@ if SHIELD_trk
 config ZMK_KEYBOARD_NAME
     default "trkbt"
 
+config PWM
+    default y
+
+config LED_PWM
+    default y
+
 endif
 
