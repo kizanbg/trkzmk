@@ -9,5 +9,8 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
+    features:
+      - keys
+      - underglow
   self:
     path: config
