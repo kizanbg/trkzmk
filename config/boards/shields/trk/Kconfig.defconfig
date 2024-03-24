@@ -1,7 +1,0 @@
-if SHIELD_trk
-
-config ZMK_KEYBOARD_NAME
-    default "trkbt"
-
-endif
-

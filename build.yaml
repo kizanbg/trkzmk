@@ -18,5 +18,5 @@
 #
 ---
 include:
-  - board: nice_nano_v2
-    shield: trk
+  - board: pro_micro
+    shield: Contra
