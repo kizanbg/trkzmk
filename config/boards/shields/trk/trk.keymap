@@ -15,6 +15,7 @@
 				&kp LSHFT   &kp Z           &kp X           &kp C           &kp V           &kp B       &kp N       &kp M       &kp COMMA   &kp DOT     &trans    &kp FSLH      &kp RSHFT   &kp UP     	  &kp DEL
 			    &kp LCTL    &kp LGUI        &kp LALT        &trans          &kp SPACE       &kp B       &kp BSPC    &trans      &mo 1       &trans      &trans    &kp RCTRL     &kp LEFT    &kp DOWN   	  &kp RIGHT
 			>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 
 		bt_layer {
@@ -25,6 +26,7 @@
                 &trans      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans          &trans		        &trans 		&trans		&kp C_MUTE	&kp C_VOL_DN &trans	  &kp C_VOL_UP  &trans      &trans		  &trans
                 &bt BT_CLR  &trans          &trans          &trans          &trans          &trans		        &trans 		&trans		&trans		&trans      &trans	  &trans        &trans      &trans		  &trans
 			>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 	};
 };
