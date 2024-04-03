@@ -56,12 +56,13 @@
         compatible = "alps,ec11";
         a-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
+        steps = <80>;
     };
 
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder>;
+        triggers-per-rotation = <20>;
     };
 };
 
