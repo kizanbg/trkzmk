@@ -52,6 +52,7 @@
             ;
     };
 
+
     encoder: encoder {
         compatible = "alps,ec11";
         label = "ENCODER";
