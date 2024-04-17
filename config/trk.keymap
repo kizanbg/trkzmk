@@ -13,13 +13,6 @@
             bindings = <&kp N5 &kp N5 &kp N8 &kp N5>;
             label = "LOGIN";
         };
-
-        mail: mail {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp K &kp I &kp Z &kp N &kp B &kp G &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
-            label = "MAIL";
-        };
     };
 
     keymap {
