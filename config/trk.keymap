@@ -7,35 +7,6 @@
 &encoder { status = "okay"; };
 
 / {
-    macros {
-        login: login {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp N5 &kp N5 &kp N8 &kp N5>;
-            label = "LOGIN";
-        };
-
-        posao_login: posao_login {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp N2 &kp N2 &kp N3 &kp N3>;
-            label = "POSAO_LOGIN";
-        };
-
-        admin_login: admin_login {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp N6 &kp LS(E) &kp N5 &kp LS(P) &kp LS(T) &kp LS(N) &kp LS(U) &kp LS(N) &kp N5 &kp LS(D)>;
-            label = "ADMIN_LOGIN";
-        };
-
-        sync: sync {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp S &kp Y &kp N &kp C>;
-            label = "SYNC";
-        };
-    };
 
     keymap {
         compatible = "zmk,keymap";
