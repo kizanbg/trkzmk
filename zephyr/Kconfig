@@ -1,7 +1,7 @@
 menu "trk keyboard features"
 
-config TRK_BATTERY_RGB_INDICATOR
-	bool "Show battery level on the RGB strip while using the function layer"
+config TRK_RGB_STATUS_INDICATOR
+	bool "Show battery, connection, and Caps Lock status on the RGB strip"
 	default y
 	depends on ZMK_RGB_UNDERGLOW
 

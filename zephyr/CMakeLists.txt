@@ -1,4 +1,4 @@
 zephyr_library()
 
 zephyr_library_include_directories(${APPLICATION_SOURCE_DIR}/include)
-zephyr_library_sources_ifdef(CONFIG_TRK_BATTERY_RGB_INDICATOR src/battery_rgb_indicator.c)
+zephyr_library_sources_ifdef(CONFIG_TRK_RGB_STATUS_INDICATOR src/battery_rgb_indicator.c)
