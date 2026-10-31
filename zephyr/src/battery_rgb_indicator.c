@@ -19,6 +19,7 @@
 #include <zmk/events/endpoint_changed.h>
 #include <zmk/events/hid_indicators_changed.h>
 #include <zmk/events/layer_state_changed.h>
+#include <zmk/events/position_state_changed.h>
 #include <zmk/hid_indicators.h>
 #include <zmk/keymap.h>
 #include <zmk/rgb_underglow.h>
@@ -27,6 +28,10 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #define FN_LAYER 1
 #define BATTERY_LAYER 2
+#define BT0_SELECT_POSITION 46
+#define BT1_SELECT_POSITION 47
+#define BT2_SELECT_POSITION 48
+#define USB_SELECT_POSITION 49
 #define BATTERY_LED_STEP_PERCENT 5
 #define RGB_REFRESH_DELAY K_MSEC(50)
 #define BATTERY_DISPLAY_HOLD K_SECONDS(2)
@@ -45,6 +50,9 @@ static bool battery_layer_active;
 static bool battery_display_latched;
 static bool rgb_override_active;
 static bool restore_underglow;
+static bool output_selection_explicit;
+static enum zmk_transport indicated_transport = ZMK_TRANSPORT_USB;
+static uint8_t indicated_profile;
 
 #if IS_ENABLED(CONFIG_ZMK_RGB_UNDERGLOW_EXT_POWER)
 static const struct device *const ext_power = DEVICE_DT_GET(DT_INST(0, zmk_ext_power_generic));
@@ -81,18 +89,25 @@ static void render_battery(void) {
 
 static void render_connection(void) {
     const struct zmk_endpoint_instance endpoint = zmk_endpoints_selected();
+    enum zmk_transport transport = endpoint.transport;
+    int profile = endpoint.transport == ZMK_TRANSPORT_BLE ? endpoint.ble.profile_index : 0;
+
+    if (output_selection_explicit) {
+        transport = indicated_transport;
+        profile = indicated_profile;
+    }
     struct led_rgb color = {.r = 0, .g = 255, .b = 0};
 
-    if (endpoint.transport == ZMK_TRANSPORT_BLE) {
-        switch (endpoint.ble.profile_index) {
+    if (transport == ZMK_TRANSPORT_BLE) {
+        switch (profile) {
         case 0:
-            color = (struct led_rgb){.r = 0, .g = 160, .b = 255};
+            color = (struct led_rgb){.r = 0, .g = 255, .b = 255};
             break;
         case 1:
             color = (struct led_rgb){.r = 0, .g = 0, .b = 255};
             break;
         default:
-            color = (struct led_rgb){.r = 0, .g = 0, .b = 96};
+            color = (struct led_rgb){.r = 255, .g = 0, .b = 128};
             break;
         }
     }
@@ -176,6 +191,39 @@ static void fn_display_clear(struct k_work *work) {
 }
 
 static int rgb_status_listener(const zmk_event_t *event) {
+    const struct zmk_position_state_changed *position_event =
+        as_zmk_position_state_changed(event);
+    if (position_event && position_event->state && fn_layer_active) {
+        switch (position_event->position) {
+        case BT0_SELECT_POSITION:
+            indicated_transport = ZMK_TRANSPORT_BLE;
+            indicated_profile = 0;
+            output_selection_explicit = true;
+            schedule_rgb_refresh();
+            break;
+        case BT1_SELECT_POSITION:
+            indicated_transport = ZMK_TRANSPORT_BLE;
+            indicated_profile = 1;
+            output_selection_explicit = true;
+            schedule_rgb_refresh();
+            break;
+        case BT2_SELECT_POSITION:
+            indicated_transport = ZMK_TRANSPORT_BLE;
+            indicated_profile = 2;
+            output_selection_explicit = true;
+            schedule_rgb_refresh();
+            break;
+        case USB_SELECT_POSITION:
+            indicated_transport = ZMK_TRANSPORT_USB;
+            output_selection_explicit = true;
+            schedule_rgb_refresh();
+            break;
+        default:
+            break;
+        }
+        return ZMK_EV_EVENT_BUBBLE;
+    }
+
     if (as_zmk_layer_state_changed(event)) {
         const struct zmk_layer_state_changed *layer_event = as_zmk_layer_state_changed(event);
 
@@ -221,3 +269,4 @@ ZMK_SUBSCRIPTION(rgb_status_indicator, zmk_layer_state_changed);
 ZMK_SUBSCRIPTION(rgb_status_indicator, zmk_battery_state_changed);
 ZMK_SUBSCRIPTION(rgb_status_indicator, zmk_hid_indicators_changed);
 ZMK_SUBSCRIPTION(rgb_status_indicator, zmk_endpoint_changed);
+ZMK_SUBSCRIPTION(rgb_status_indicator, zmk_position_state_changed);
