@@ -1,0 +1,8 @@
+menu "trk keyboard features"
+
+config TRK_BATTERY_RGB_INDICATOR
+	bool "Show battery level on the RGB strip while using the function layer"
+	default y
+	depends on ZMK_RGB_UNDERGLOW
+
+endmenu

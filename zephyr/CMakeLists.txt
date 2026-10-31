@@ -1,0 +1,3 @@
+zephyr_library()
+
+zephyr_library_sources_ifdef(CONFIG_TRK_BATTERY_RGB_INDICATOR src/battery_rgb_indicator.c)
