@@ -1,0 +1,12 @@
+file_format: "1"
+id: trk
+name: TRK
+type: shield
+url: https://github.com/kizanbg/trkzmk
+requires:
+  - pro_micro
+features:
+  - keys
+  - encoder
+  - underglow
+  - studio
